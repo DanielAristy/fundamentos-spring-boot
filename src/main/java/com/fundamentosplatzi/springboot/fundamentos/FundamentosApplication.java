@@ -1,5 +1,6 @@
 package com.fundamentosplatzi.springboot.fundamentos;
 
+import com.fundamentosplatzi.springboot.fundamentos.beans.MyBean;
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -10,9 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FundamentosApplication implements CommandLineRunner {
 
 	private ComponentDependency componentDependency;
+	private MyBean myBean;
 
-	public FundamentosApplication(ComponentDependency componentDependency) {
+	public FundamentosApplication(ComponentDependency componentDependency, MyBean myBean) {
 		this.componentDependency = componentDependency;
+		this.myBean = myBean;
 	}
 
 
@@ -23,5 +26,6 @@ public class FundamentosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		componentDependency.saludar();
+		myBean.print();
 	}
 }
